@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     public float bulletSpeed;
+    public float secondsUntilDestroyed;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,14 @@ public class BulletBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        secondsUntilDestroyed -= Time.deltaTime;
+
+        transform.localScale *= Mathf.Min(1, secondsUntilDestroyed);
+
+        if (secondsUntilDestroyed < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision target)
@@ -26,8 +34,9 @@ public class BulletBehaviour : MonoBehaviour
         if (theirGameObject.GetComponent<EnemyBehaviour>() != null)
         {
             Destroy(theirGameObject);
+            Destroy(gameObject);
         }
 
-        Destroy(gameObject);
+        
     }
 }
