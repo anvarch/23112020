@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public GameObject target;
+    
     public float enemySpeed;
 
     // Start is called before the first frame update
@@ -15,8 +15,25 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody enemyRigidbody = GetComponent<Rigidbody>();
-        Vector3 vectorTotarget = target.transform.position - transform.position;
-        enemyRigidbody.velocity = vectorTotarget.normalized * enemySpeed;
+        if (References.thePlayer != null)
+        {
+            Rigidbody enemyRigidbody = GetComponent<Rigidbody>();
+            Vector3 vectorTotarget = References.thePlayer.transform.position - transform.position;
+            enemyRigidbody.velocity = vectorTotarget.normalized * enemySpeed;
+        }
+    }
+
+    private void OnCollisionEnter(Collision target)
+    {
+        GameObject theirGameObject = target.gameObject;
+
+        if (theirGameObject.GetComponent<PlayerBehaviour>() != null)
+        {
+            HealthSystem theirHealthSystem = theirGameObject.GetComponent<HealthSystem>();
+            if (theirHealthSystem != null)
+                theirHealthSystem.TakeDamage(1);
+        }
+
+
     }
 }

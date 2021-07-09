@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2982488041073121116}
   - component: {fileID: 2982488041073121117}
   - component: {fileID: 2982488041073121112}
+  - component: {fileID: -5984427113480938531}
   - component: {fileID: 2982488041073121113}
   m_Layer: 0
   m_Name: Enemy
@@ -108,9 +109,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d08222023a08b488f914251970ea57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   enemySpeed: 5
-  secondsBetweenSpawn: 5
+--- !u!114 &-5984427113480938531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2982488041073121058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e50d2c386cd67b4199189d648ab10d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  currentHealth: 0
+  healthBarPrefab: {fileID: 9008053117922911455, guid: 91e313ef7996c654892a8c5ff45291c7,
+    type: 3}
 --- !u!54 &2982488041073121113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,5 +140,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
