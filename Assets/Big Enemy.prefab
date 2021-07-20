@@ -121,7 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e50d2c386cd67b4199189d648ab10d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  maxHealth: 5
+  healthBarPrefab: {fileID: 9008053117922911455, guid: 91e313ef7996c654892a8c5ff45291c7,
+    type: 3}
+  deathEffectPrefab: {fileID: 8647121980674801472, guid: 9d5fbc93e63916445987b3a43af06170,
+    type: 3}
 --- !u!54 &2458645785332299530
 Rigidbody:
   m_ObjectHideFlags: 0

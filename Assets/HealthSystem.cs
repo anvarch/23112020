@@ -11,6 +11,8 @@ public class HealthSystem : MonoBehaviour
 
     public GameObject healthBarPrefab;
 
+    public GameObject deathEffectPrefab;
+
     HealthBar myHealthBar;
     
     // Start is called before the first frame update
@@ -27,6 +29,10 @@ public class HealthSystem : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            if (deathEffectPrefab != null)
+            {
+                Instantiate(deathEffectPrefab, transform.position + Vector3.down*0.5f,transform.rotation);
+            }
             Destroy(gameObject);
         }
     }
