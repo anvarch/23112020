@@ -6,14 +6,18 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public float speed;
     public GameObject bulletPrefab;
+    public GameObject grenadePrefab;
     public float secondsBetweenShots;
+    public float secondsBetweenGrenades;
 
     float secondsSinceLastShot;
+    float secondsSinceLastGrenade;
 
     // Start is called before the first frame update
     void Start()
     {
         secondsSinceLastShot = secondsBetweenShots;
+        secondsSinceLastGrenade = secondsBetweenGrenades;
         References.thePlayer = gameObject;
     }
 
@@ -36,12 +40,18 @@ public class PlayerBehaviour : MonoBehaviour
 
         //Firing
         secondsSinceLastShot += Time.deltaTime;
-
+        secondsSinceLastGrenade += Time.deltaTime;
 
         if (Input.GetButton("Fire1") && secondsSinceLastShot >= secondsBetweenShots)
         {
             Instantiate(bulletPrefab, transform.position + transform.forward *1.5f, transform.rotation);
             secondsSinceLastShot = 0;
+        }
+        if (Input.GetButton("Fire2") && secondsSinceLastGrenade >= secondsBetweenGrenades)
+        {
+            Instantiate(grenadePrefab, transform.position + (transform.forward * 0 + transform.up) * 1.0f, transform.rotation);
+            transform.position = lookAtPosition;
+            secondsSinceLastGrenade = 0;
         }
     }
 }
